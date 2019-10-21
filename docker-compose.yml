@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:alpine
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=gobarber
+      - POSTGRES_PASSWORD=gobarber
+      - POSTGRES_DB=gobarber
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  mongobarber:
+    image: mongo
+    ports:
+      - '27017:27017'
+
+  redisbarber:
+    image: redis:alpine
+    ports:
+      - 6379:6379
+volumes:
+  postgres_data:
